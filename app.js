@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
+var db = require('./model/db');
 
 var index = require('./routes/index');
 var coins = require('./routes/coins');
@@ -45,7 +46,7 @@ if (app.get('env') === 'development') {
     res.render('error', {
       message: err.message,
       error: err
-    });
+    })
   });
 }
 

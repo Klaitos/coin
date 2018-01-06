@@ -1,2 +1,10 @@
 <%- contentFor('body') %>
-  icispdlspldplsplsdpl
+<h2>Coins list</h2>
+  <ul>
+    <% coins.forEach(function(coin) { %>
+      <li>
+        <%= coin.name %> -
+          <%= coin.created_at %>
+      </li>
+      <% }); %>
+  </ul>
