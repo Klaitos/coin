@@ -3,8 +3,7 @@
   <ul>
     <% coins.forEach(function(coin) { %>
       <li>
-        <%= coin.name %> -
-          <%= coin.created_at %>
+        <strong>[<%= coin._id %>]</strong> <%= coin.name %>
       </li>
       <% }); %>
   </ul>

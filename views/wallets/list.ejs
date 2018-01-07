@@ -1,0 +1,9 @@
+<%- contentFor('body') %>
+<h2>Wallet list</h2>
+  <ul>
+    <% wallets.forEach(function(wallet) { %>
+      <li>
+        <strong>[<%= wallet._id %>]</strong> <%= wallet.name %>
+      </li>
+      <% }); %>
+  </ul>
