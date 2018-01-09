@@ -1,2 +1,7 @@
 <%- contentFor('body') %>
-Ajouté
+
+<% if(err){ %>
+    <div class="alert alert-danger"><%= err %></div>
+  <% } else{ %>  
+    <div class="alert alert-success">Added</div>
+ <% } %>

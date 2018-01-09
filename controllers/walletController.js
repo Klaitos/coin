@@ -1,7 +1,7 @@
 var Wallet = require('../models/wallet'),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'), //parses information from POST;
-    Wallet = require('../models/wallet');
+    bodyParser = require('body-parser'),
+    Asset = require('../models/asset');
 
 // Display list of all Wallets
 exports.wallet_list = function (req, res) {
@@ -13,7 +13,10 @@ exports.wallet_list = function (req, res) {
 
 // Display detail page for a specific Wallet
 exports.wallet_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: Wallet detail: ' + req.params.id);
+    Asset.find({ wallet: req.params.id }).populate('coin').exec().then(function (assets) {
+        console.log(assets);
+        res.render('wallets/show', { assets: assets });
+    });
 };
 
 // Display Wallet create form on GET
@@ -23,11 +26,9 @@ exports.wallet_create_get = function (req, res) {
 
 // Handle Wallet create on POST
 exports.wallet_create_post = function (req, res) {
-    var name = req.body.name,
-        id = req.body.id;
+    var name = req.body.name;
 
     mongoose.model('Wallet').create({
-        _id: id,
         name: name,
     }, function (err, Wallet) {
         console.log(err, Wallet);

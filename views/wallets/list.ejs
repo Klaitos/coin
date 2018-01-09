@@ -1,9 +1,10 @@
 <%- contentFor('body') %>
 <h2>Wallet list</h2>
+  <a class="btn btn-info" href="/wallet/create">Add</a>
   <ul>
     <% wallets.forEach(function(wallet) { %>
       <li>
-        <strong>[<%= wallet._id %>]</strong> <%= wallet.name %>
+        <a href="/wallet/<%= wallet._id %>">  <strong>[<%= wallet._id %>]</strong> <%= wallet.name %></a>
       </li>
       <% }); %>
-  </ul>
+  </ul>-

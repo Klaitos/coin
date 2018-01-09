@@ -1,7 +1,6 @@
 var Coin = require('../models/coin'),
     mongoose = require('mongoose'),
-    bodyParser = require('body-parser'), //parses information from POST;
-    Coin = require('../models/coin');
+    bodyParser = require('body-parser');
 
 // Display list of all Coins
 exports.coin_list = function (req, res) {
@@ -24,16 +23,15 @@ exports.coin_create_get = function (req, res) {
 // Handle Coin create on POST
 exports.coin_create_post = function (req, res) {
     var name = req.body.name,
-        id = req.body.id;
+        short_name = req.body.short_name,
+        full_name = req.body.full_name;
 
     mongoose.model('Coin').create({
-        _id: id,
-        name: name,
+        short_name: short_name,
+        full_name: full_name,
     }, function (err, Coin) {
-        console.log(err, Coin);
+        res.render('coins/store', {err: err});
     });
-
-    res.render('coins/store');
 };
 
 // Display Coin delete form on GET

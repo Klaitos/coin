@@ -1,0 +1,16 @@
+<form method="post" action="/asset/create">
+    <div class="form-group">
+        <select name="wallet" id="">
+            <% wallets.forEach(function(wallet) { %>
+                <option value="<%= wallet._id %>"><%= wallet.name %></option>
+            <% }); %>
+        </select>
+        <select name="coin" id="">
+                <% coins.forEach(function(coin) { %>
+                    <option value="<%= coin._id %>"><%= coin.name %></option>
+                <% }); %>
+            </select>
+            <input type="number" name="qty" min="0">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
